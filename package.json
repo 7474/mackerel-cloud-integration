@@ -1,0 +1,18 @@
+{
+  "name": "mackerel-cloud-integration",
+  "version": "0.1.0",
+  "description": "Mackerel's utility for cloud integration.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mackerel",
+    "aws"
+  ],
+  "author": "koudenpa",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^12.7.8",
+    "typescript": "^3.6.3"
+  }
+}
