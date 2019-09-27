@@ -2,8 +2,13 @@
   "name": "mackerel-cloud-integration",
   "version": "0.1.0",
   "description": "Mackerel's utility for cloud integration.",
+  "main": "lib/index",
+  "types": "lib/index",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run build:live",
+    "build:live": "nodemon --exec ./node_modules/.bin/ts-node -- ./src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc"
   },
   "keywords": [
     "mackerel",
@@ -13,6 +18,8 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^12.7.8",
+    "nodemon": "^1.19.2",
+    "ts-node": "^8.4.1",
     "typescript": "^3.6.3"
   }
 }
