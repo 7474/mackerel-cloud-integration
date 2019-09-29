@@ -13,15 +13,17 @@ export class S3 extends ACloudRecource {
     const awsS3 = new AWS.S3();
     // Host.name is S3 Bucket name.
     // Host.customIdentifier is ARN.
-    const req = await awsS3
-      .headBucket({ Bucket: this.mackerelHost.name })
-      .promise();
-    if (!req.$response.error) {
+    try {
+      const req = await awsS3
+        .headBucket({ Bucket: this.mackerelHost.name })
+        .promise();
       return req.$response.data;
-    }
-    if (req.$response.httpResponse.statusCode === 404) {
+    } catch (err) {
+      // If statusCode is 404, it is assuming no resource exists.
+      if (err.statusCode == 404) {
         return undefined;
+      }
+      throw err;
     }
-    throw req.$response.error;
   }
 }
