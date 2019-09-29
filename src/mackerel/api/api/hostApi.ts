@@ -16,6 +16,7 @@ import http = require('http');
 /* tslint:disable:no-unused-locals */
 import { ApiResponse } from '../model/apiResponse';
 import { HostResponse } from '../model/hostResponse';
+import { HostStatusRequest } from '../model/hostStatusRequest';
 import { HostsResponse } from '../model/hostsResponse';
 
 import { ObjectSerializer, Authentication, VoidAuth } from '../model/models';
@@ -211,7 +212,7 @@ export class HostApi {
      * @param hostId 
      * @param hostStatus 
      */
-    public async postHostStatus (hostId: string, hostStatus: ApiResponse, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: HostResponse;  }> {
+    public async postHostStatus (hostId: string, hostStatus: HostStatusRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ApiResponse;  }> {
         const localVarPath = this.basePath + '/hosts/{hostId}/status'
             .replace('{' + 'hostId' + '}', encodeURIComponent(String(hostId)));
         let localVarQueryParameters: any = {};
@@ -239,7 +240,7 @@ export class HostApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(hostStatus, "ApiResponse")
+            body: ObjectSerializer.serialize(hostStatus, "HostStatusRequest")
         };
 
         let authenticationPromise = Promise.resolve();
@@ -254,12 +255,12 @@ export class HostApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: HostResponse;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: ApiResponse;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
-                        body = ObjectSerializer.deserialize(body, "HostResponse");
+                        body = ObjectSerializer.deserialize(body, "ApiResponse");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {
