@@ -7,8 +7,10 @@
   "scripts": {
     "start": "npm run build:live",
     "build:live": "nodemon --exec ./node_modules/.bin/ts-node -- ./src/index.ts",
-    "test": "jest",
-    "tsc": "tsc"
+    "test": "jest --silent=false --verbose=false",
+    "tsc": "tsc",
+    "api-gen-mackerel": "npx openapi-generator generate -i https://raw.githubusercontent.com/7474/open-api-spec-sandbox/master/mackerel/mackerel-api.yml -g typescript-node -o ./src/mackerel/api --additional-properties supportsES6=true",
+    "dumy": "echo dumy"
   },
   "keywords": [
     "mackerel",
@@ -17,12 +19,18 @@
   "author": "koudenpa",
   "license": "MIT",
   "devDependencies": {
+    "@openapitools/openapi-generator-cli": "0.0.21-4.1.2",
     "@types/jest": "^24.0.18",
     "@types/node": "^12.7.8",
+    "@types/request": "^2.48.3",
     "jest": "^24.9.0",
     "nodemon": "^1.19.2",
     "ts-jest": "^24.1.0",
     "ts-node": "^8.4.1",
     "typescript": "^3.6.3"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.537.0",
+    "mackerel": "^0.1.0"
   }
 }
