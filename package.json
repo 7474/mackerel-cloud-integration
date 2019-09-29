@@ -30,6 +30,8 @@
     "typescript": "^3.6.3"
   },
   "dependencies": {
+    "@azure/arm-resourcegraph": "^2.0.0",
+    "@azure/ms-rest-nodeauth": "^2.0.5",
     "aws-sdk": "^2.537.0",
     "mackerel": "^0.1.0"
   }
