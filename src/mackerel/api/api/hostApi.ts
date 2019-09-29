@@ -14,8 +14,8 @@ import localVarRequest = require('request');
 import http = require('http');
 
 /* tslint:disable:no-unused-locals */
+import { ApiResponse } from '../model/apiResponse';
 import { HostResponse } from '../model/hostResponse';
-import { HostStatusRequest } from '../model/hostStatusRequest';
 import { HostsResponse } from '../model/hostsResponse';
 
 import { ObjectSerializer, Authentication, VoidAuth } from '../model/models';
@@ -211,7 +211,7 @@ export class HostApi {
      * @param hostId 
      * @param hostStatus 
      */
-    public async postHostStatus (hostId: string, hostStatus: HostStatusRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: HostResponse;  }> {
+    public async postHostStatus (hostId: string, hostStatus: ApiResponse, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: HostResponse;  }> {
         const localVarPath = this.basePath + '/hosts/{hostId}/status'
             .replace('{' + 'hostId' + '}', encodeURIComponent(String(hostId)));
         let localVarQueryParameters: any = {};
@@ -239,7 +239,7 @@ export class HostApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(hostStatus, "HostStatusRequest")
+            body: ObjectSerializer.serialize(hostStatus, "ApiResponse")
         };
 
         let authenticationPromise = Promise.resolve();
