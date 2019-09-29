@@ -11,8 +11,8 @@
  */
 /// <reference types="node" />
 import http = require('http');
+import { ApiResponse } from '../model/apiResponse';
 import { HostResponse } from '../model/hostResponse';
-import { HostStatusRequest } from '../model/hostStatusRequest';
 import { HostsResponse } from '../model/hostsResponse';
 import { Authentication } from '../model/models';
 import { ApiKeyAuth } from '../model/models';
@@ -65,7 +65,7 @@ export declare class HostApi {
      * @param hostId
      * @param hostStatus
      */
-    postHostStatus(hostId: string, hostStatus: HostStatusRequest, options?: {
+    postHostStatus(hostId: string, hostStatus: ApiResponse, options?: {
         headers: {
             [name: string]: string;
         };
