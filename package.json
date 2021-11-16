@@ -32,7 +32,7 @@
   "dependencies": {
     "@azure/arm-resourcegraph": "^2.0.0",
     "@azure/ms-rest-nodeauth": "^2.0.5",
-    "aws-sdk": "^2.537.0",
+    "aws-sdk": "^2.814.0",
     "mackerel": "^0.1.0"
   }
 }
